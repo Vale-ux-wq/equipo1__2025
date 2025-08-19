@@ -1,151 +1,110 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Timer con Fecha y Hora</title>
-  <style>
-    :root {
-      --duracion: 10s; /* ⏳ CAMBIA ESTE VALOR (ej: 10s, 60s, 2m) */
-    }
+:root {
+  --duracion: 10s; /* ⏳ CAMBIA ESTE VALOR (ej: 10s, 60s, 2m) */
+}
 
-    body {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      background: #0f172a;
-      font-family: Arial, sans-serif;
-      color: #fff;
-    }
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: #0f172a;
+  font-family: Arial, sans-serif;
+}
 
-    .timer {
-      position: relative;
-      width: 220px;
-      height: 220px;
-      border-radius: 50%;
-      background: conic-gradient(#38bdf8 0deg, #1e293b 0deg);
-      animation: countdown var(--duracion) linear forwards;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
+.timer {
+  position: relative;
+  width: 220px;
+  height: 220px;
+  border-radius: 50%;
+  background: conic-gradient(#38bdf8 0deg, #1e293b 0deg);
+  animation: countdown var(--duracion) linear forwards;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
-    @keyframes countdown {
-      from { background: conic-gradient(#38bdf8 0deg, #1e293b 0deg); }
-      to   { background: conic-gradient(#38bdf8 360deg, #1e293b 360deg); }
-    }
+@keyframes countdown {
+  from { background: conic-gradient(#38bdf8 0deg, #1e293b 0deg); }
+  to   { background: conic-gradient(#38bdf8 360deg, #1e293b 360deg); }
+}
 
-    .inner {
-      position: absolute;
-      top: 20px;
-      left: 20px;
-      width: 180px;
-      height: 180px;
-      border-radius: 50%;
-      background: #0f172a;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      color: #fff;
-      font-size: 2em;
-      font-weight: bold;
-      z-index: 2;
-    }
+.inner {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  background: #0f172a;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  font-size: 2em;
+  font-weight: bold;
+  z-index: 2;
+}
 
-    .inner::after {
-      content: "⏳";
-      animation: textcount var(--duracion) steps(30, end) forwards;
-    }
+/* Texto animado (cuenta atrás) */
+.inner::after {
+  content: "⏳";
+  animation: textcount var(--duracion) steps(30, end) forwards;
+}
 
-    @keyframes textcount {
-      0%   { content: "30s"; }
-      3.3% { content: "29s"; }
-      6.6% { content: "28s"; }
-      10%  { content: "27s"; }
-      13.3%{ content: "26s"; }
-      16.6%{ content: "25s"; }
-      20%  { content: "24s"; }
-      23.3%{ content: "23s"; }
-      26.6%{ content: "22s"; }
-      30%  { content: "21s"; }
-      33.3%{ content: "20s"; }
-      36.6%{ content: "19s"; }
-      40%  { content: "18s"; }
-      43.3%{ content: "17s"; }
-      46.6%{ content: "16s"; }
-      50%  { content: "15s"; }
-      53.3%{ content: "14s"; }
-      56.6%{ content: "13s"; }
-      60%  { content: "12s"; }
-      63.3%{ content: "11s"; }
-      66.6%{ content: "10s"; }
-      70%  { content: "9s"; }
-      73.3%{ content: "8s"; }
-      76.6%{ content: "7s"; }
-      80%  { content: "6s"; }
-      83.3%{ content: "5s"; }
-      86.6%{ content: "4s"; }
-      90%  { content: "3s"; }
-      93.3%{ content: "2s"; }
-      96.6%{ content: "1s"; }
-      100% { content: " "; }
-    }
+/* Aquí se definen los números que van cambiando */
+@keyframes textcount {
+  0%   { content: "30s"; }
+  3.3% { content: "29s"; }
+  6.6% { content: "28s"; }
+  10%  { content: "27s"; }
+  13.3%{ content: "26s"; }
+  16.6%{ content: "25s"; }
+  20%  { content: "24s"; }
+  23.3%{ content: "23s"; }
+  26.6%{ content: "22s"; }
+  30%  { content: "21s"; }
+  33.3%{ content: "20s"; }
+  36.6%{ content: "19s"; }
+  40%  { content: "18s"; }
+  43.3%{ content: "17s"; }
+  46.6%{ content: "16s"; }
+  50%  { content: "15s"; }
+  53.3%{ content: "14s"; }
+  56.6%{ content: "13s"; }
+  60%  { content: "12s"; }
+  63.3%{ content: "11s"; }
+  66.6%{ content: "10s"; }
+  70%  { content: "9s"; }
+  73.3%{ content: "8s"; }
+  76.6%{ content: "7s"; }
+  80%  { content: "6s"; }
+  83.3%{ content: "5s"; }
+  86.6%{ content: "4s"; }
+  90%  { content: "3s"; }
+  93.3%{ content: "2s"; }
+  96.6%{ content: "1s"; }
+  100% { content: " "; }
+}
 
-    .final-text {
-      position: absolute;
-      inset: 0;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      font-size: 1.5em;
-      font-weight: bold;
-      color: #facc15;
-      text-align: center;
-      opacity: 0;
-      z-index: 3;
-      animation: showFinal 2s ease forwards;
-      animation-delay: var(--duracion);
-    }
+/* Texto final */
+.final-text {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5em;
+  font-weight: bold;
+  color: #facc15;
+  text-align: center;
+  opacity: 0;
+  z-index: 3;
+  animation: showFinal 2s ease forwards;
+  animation-delay: var(--duracion);
+}
 
-    @keyframes showFinal {
-      to { opacity: 1; transform: scale(1.1); }
-    }
+@keyframes showFinal {
+  to { opacity: 1; transform: scale(1.1); }
+}
 
-    /* Fecha y hora */
-    .datetime {
-      margin-top: 20px;
-      font-size: 1.2em;
-      color: #f8fafc;
-      text-align: center;
-    }
-  </style>
-</head>
-<body>
-
-  <div class="timer">
-    <div class="inner"></div>
-    <div class="final-text">⏰ Tiempo terminado</div>
-  </div>
-
-  <!-- Aquí aparece la fecha y hora -->
-  <div class="datetime" id="datetime"></div>
-
-  <script>
-    function actualizarFechaHora() {
-      const now = new Date();
-      const opciones = { 
-        weekday: 'long', year: 'numeric', month: 'long', 
-        day: 'numeric', hour: '2-digit', minute: '2-digit', second: '2-digit' 
-      };
-      document.getElementById("datetime").textContent = 
-        now.toLocaleDateString('es-ES', opciones);
-    }
-
-    setInterval(actualizarFechaHora, 1000);
-    actualizarFechaHora();
-  </script>
-
-</body>
-</html>
+/* 19 de agosto del 2025 / son las 9:32am */
